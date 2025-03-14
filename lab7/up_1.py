@@ -1,3 +1,4 @@
+
 import pygame
 import datetime
 
@@ -24,8 +25,8 @@ while game:
     second = date.second
     minute = date.minute
     
-    sec_angle = -second * 6
-    min_angle = -minute * 6
+    sec_angle = (-second * 6) + 60
+    min_angle = (-minute * 6) - 60
         
     min_rot = pygame.transform.rotate(min, min_angle) 
     min_rect = min_rot.get_rect(center=(606,420))
@@ -44,5 +45,3 @@ while game:
             game = False
 
 pygame.quit()
-
-
