@@ -28,10 +28,4 @@ print(account.deposit(deposit_amount))
 withdraw_amount = float(input("Aksha alu: "))
 print(account.withdraw(withdraw_amount))
 
-overdraft_amount = float(input("Overdraftty tekseru ushin aksha engiziniz: "))
-if overdraft_amount > account.balance:
-    print("Overdraft! Balans teris boldy.")
-else:
-    print("Overdraft joq. Balans jetkilikti.")
-
 print(account)

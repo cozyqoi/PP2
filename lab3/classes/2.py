@@ -1,5 +1,3 @@
-import math
-
 class Shape:
     def area(self):
         return 0

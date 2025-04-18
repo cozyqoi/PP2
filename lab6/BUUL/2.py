@@ -1,4 +1,4 @@
-a=input()
+a= input()
 big=0
 small=0
 for i in range(len(a)):

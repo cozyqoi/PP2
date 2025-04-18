@@ -9,12 +9,16 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Advanced Paint")
 
 # параметры рисования
-current_color = 'BLACK'
+current_color = 'BLACK' # цвет по умолчанию
 brush_size = 5
 drawing = False
 last_pos = None
 start_pos = None
 mode = "brush"  # мод по умолчанию
+red_rect = pygame.Rect(0,0,40,40)
+blue_rect = pygame.Rect(40,0,40,40)
+green_rect = pygame.Rect(80,0,40,40)
+
 
 screen.fill('WHITE')
 
@@ -59,7 +63,7 @@ while True:
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
-            # цвета
+            # изменение цвета
             if event.key == pygame.K_1: current_color = 'BLUE'
             elif event.key == pygame.K_2: current_color = 'GREEN'
             elif event.key == pygame.K_3: current_color = 'RED'
@@ -80,6 +84,12 @@ while True:
             drawing = True
             start_pos = event.pos
             last_pos = event.pos
+            if red_rect.collidepoint(event.pos):
+                current_color = 'RED'
+            elif blue_rect.collidepoint(event.pos):
+                current_color = 'BLUE'
+            elif green_rect.collidepoint(event.pos): 
+                current_color = 'GREEN'    
 
         # мышь отпущена - закончить рисование
         if event.type == pygame.MOUSEBUTTONUP:
@@ -131,9 +141,8 @@ while True:
                 last_pos = event.pos
 
     # инструкции
-    font = pygame.font.SysFont(None, 24)
+    font = pygame.font.SysFont('Times New Roman', 24)
     instructions = [
-        "1: Blue | 2: Green | 3: Red",
         "B: Brush | E: Eraser | Q: Clear",
         "C: Circle | R: Rectangle | S: Square",
         "T: Right Triangle | Y: Equilateral Triangle | H: Rhombus"
@@ -141,6 +150,11 @@ while True:
     
     for i, text in enumerate(instructions):
         text_surface = font.render(text, True, 'BLACK')
-        screen.blit(text_surface, (10, 10 + i * 25))
-
+        screen.blit(text_surface, (10, 40 + i * 25))
+    
+    pygame.draw.rect(screen, 'RED', red_rect)
+    pygame.draw.rect(screen, 'BLUE', blue_rect)
+    pygame.draw.rect(screen, 'GREEN', green_rect)
     pygame.display.update()
+
+        

@@ -4,12 +4,12 @@ pygame.init()
 
 screen =  pygame.display.set_mode((800,800))
 clock = pygame.time.Clock()
-x ,y = 375, 375
+x, y = 375, 375
 
 game = True
 
 while game:
-    screen.fill("white")
+    screen.fill("pink")
     
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x > 50:  
